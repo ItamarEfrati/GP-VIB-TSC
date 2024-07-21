@@ -1,0 +1,12 @@
+_target_: src.datasets.tsc.tsc.TimeSeriesClassification
+_partial_: true
+
+download_dir: ${paths.data_dir}/tsc/uea
+download_url: https://www.timeseriesclassification.com/aeon-toolkit/Archives/Multivariate2018_ts.zip
+file_name: Multivariate2018_ts.zip
+batch_size: 64
+num_workers: 1
+dataset_name: 
+
+
+

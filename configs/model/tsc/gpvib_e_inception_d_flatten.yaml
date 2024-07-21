@@ -1,0 +1,35 @@
+_target_: src.models.basics.gpvib.GPVIB
+_partial_: True
+
+defaults:
+  - tsc_default.yaml
+
+timeseries_encoder:
+  _target_: src.models.encoders.InceptionEncoder
+  _partial_: True
+  input_n_channels: -1
+  encoding_size: 128
+  encoding_series_size: -1
+  number_of_filters: 32
+  bottleneck_size: 32
+  use_bottleneck: true
+  depth: 1
+
+
+encoder:
+  _target_: src.models.encoders.BandedJointEncoder
+  _partial_: True
+  precision_activation:
+    _target_: torch.nn.Softmax
+  encoding_size: ${model.timeseries_encoder.encoding_size}
+
+
+decoder:
+  _target_: src.models.decoders.FlattenMultinomialDecoder
+  _partial_: True
+  z_dim: ${model.timeseries_encoder.encoding_size}
+  hidden_size_1: -1
+  hidden_size_2: -1
+  hidden_size_3: -1
+  num_samples: ${model.num_samples}
+  output_size: ${model.num_classes}
