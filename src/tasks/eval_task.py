@@ -29,7 +29,6 @@ def evaluate(config: DictConfig) -> dict:
     """
 
     datasets_utils.set_seed(config)
-
     log.info(f"Instantiating datamodule <{config.datamodule._target_}>")
     datamodule: pl.LightningDataModule = hydra.utils.instantiate(config.datamodule)
 

@@ -3,7 +3,7 @@
 # overfits to 3 batches
 
 defaults:
-  - default.yaml
+  - hmnist.yaml
 
 trainer:
   max_epochs: 20
